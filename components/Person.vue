@@ -9,16 +9,28 @@
             <p class='flex flex-row justify-around w-48 text-gray'><span>{{objectData.postedAt}}</span><span>{{objectData.contract}}</span><span>{{objectData.location}}</span></p>
         </div>
         <div class="flex flex-row flex-grow m-2 justify-around items-center button"> 
-            <Button :btnText="objectData.role" />
+            <Button :btnText="objectData.role" v-on:handleClick="doAnotherStuff"/>
             <Button :btnText="objectData.level" />
             <Button v-for="lang in objectData.languages" :btnText="lang" :key="lang"/>
+            <span></span>
         </div>
     </div>
     </div>
 </template>
 <script>
 export default {
-    props:['objectData']
+    props:['objectData'],
+    data(){
+        return{
+            counter: 0
+        }
+    },
+    methods:{
+        doAnotherStuff(){
+            this.counter += 1
+            alert(this.counter)
+        }
+    }
 }
 </script>
 <style scoped>
